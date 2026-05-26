@@ -1,7 +1,7 @@
 # Scale Interview
 
 > 面向技术面试场景的多 Agent Workflow 系统  
-> Resume / JD 驱动的模拟面试、Tutor 辅导、RAG 检索、逐轮评估与结构化报告
+> 基于简历与 JD 的模拟面试、Tutor 辅导、RAG 检索、逐轮评估与结构化报告
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.6-6DB33F)
@@ -15,7 +15,7 @@
 
 ## 项目简介
 
-Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它不是简单的聊天机器人，而是围绕“模拟技术面试”这个垂直场景，将状态机、Planner 决策、RAG 检索、逐轮评估、最终报告、可观测与兜底串成了一条完整的 Agent Workflow。
+Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它不是简单的聊天机器人，而是围绕“模拟技术面试”这个垂直场景，把状态机、Planner 决策、RAG 检索、逐轮评估、最终报告、可观测和兜底串成了一条完整的 Agent Workflow。
 
 更准确的定位是：
 
@@ -26,15 +26,31 @@ Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它
 ## 项目截图
 
 ### 登录页
-![登录页](assets/screenshot-01.png)
+![登录页](assets/screenshot-06.png)
 
 ### 面试工作台
-![面试工作台](assets/screenshot-02.png)
+![面试工作台](assets/screenshot-03.png)
 
 ### 题库内容预览
-![题库内容预览](assets/screenshot-03.png)
+![题库内容预览](assets/screenshot-07.png)
 
 ---
+
+### JD/简历内容预览
+
+![面试工作台](assets/screenshot-02.png)
+
+### 生成面试评估报告
+
+![生成面试评估报告](assets/screenshot-07.png)
+
+### 面试评估报告pdf
+
+![面试评估报告pdf](assets/screenshot-05.png)
+
+### 辅导工作台
+
+![辅导工作台](assets/screenshot-01.png)
 
 ## 核心亮点
 
@@ -52,9 +68,9 @@ Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它
 
 - Planner 决策层输出 `ActionPlan`
 - Interview 执行层按指令提问
-- 服务端对 Planner 输出做合法性校验、一次轻量重试与 fallback
+- 服务端对 Planner 输出做对象级 structured output 校验、轻量重试和 fallback
 
-这样做的目的是提升：
+这样做的目标是提升：
 
 - 对话可控性
 - 流程稳定性
@@ -76,9 +92,9 @@ Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它
 - Planner 决策结果
 - fallback 规则
 
-进行推进。
+推进面试流程。
 
-### 4. RAG 已做基础工程化
+### 4. RAG 已做基础工程化补强
 
 知识库链路不只是“上传文档 -> 检索”：
 
@@ -165,7 +181,7 @@ Scale Interview 是一个面向求职面试场景的 AI 应用工程项目。它
 Scale-Interview/
 ├─ backend/      # Spring Boot + LangChain4j 后端
 ├─ frontend/     # Vue3 + Vite 前端工作台
-├─ assets/       # GitHub README 展示截图
+├─ assets/       # README 展示截图
 ├─ .gitignore
 └─ README.md
 ```
@@ -178,7 +194,7 @@ Scale-Interview/
 
 1. 前端发起 `/api/interview/chat`
 2. 后端读取 `InterviewSessionState`
-3. `InterviewPlannerAgent` 生成下一步决策
+3. `InterviewPlannerAgent` 决策下一步
 4. 需要时调用 `KnowledgeBaseTools`
 5. `InterviewAgent` 流式生成面试官回复
 6. `AnswerEvaluationAgent` 异步进行逐轮评估
@@ -229,6 +245,13 @@ npm install
 npm run dev
 ```
 
+### 默认登录
+
+```text
+username: root
+password: 1234
+```
+
 ---
 
 ## 构建与测试
@@ -271,5 +294,31 @@ npm run build
 - 用户隔离
 - 规则兜底
 
+### 未主打
 
+- 完整 MCP 平台
+- A2A 协议
+- 企业级模型网关
+- 高级检索算法平台
+- 重型多模型编排框架
 
+所以它更适合展示：
+
+- Agent Workflow 工程化
+- AI 应用后端落地
+- RAG / 记忆 / 可观测性基础实践
+
+---
+
+## 面试时推荐怎么讲
+
+推荐说法：
+
+> 我做的是一个面向技术面试场景的多 Agent Workflow 系统。系统通过状态机管理面试阶段，通过 Planner 决策下一步问题，通过 Tool 调用接入知识库，通过逐轮评估沉淀过程数据，最终生成结构化报告，并且补齐了用户隔离、RAG 调试、摘要记忆、模型指标和兜底逻辑。
+
+不建议夸大的说法：
+
+- 完整 MCP 平台
+- 完整 A2A 协议实践
+- 企业级模型网关
+- 高级检索算法平台
