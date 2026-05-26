@@ -1,0 +1,81 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #e2e8f0;
+  background: radial-gradient(circle at top left, #1e293b, #0f172a 80%);
+  background-attachment: fixed;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* Customizing Element Plus dialog for dark mode */
+.el-dialog {
+  background: #1e293b !important;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+}
+.el-dialog__title {
+  color: #f8fafc !important;
+  font-weight: 700 !important;
+}
+.el-descriptions__title {
+  color: #f8fafc !important;
+}
+.el-descriptions__body {
+  background-color: transparent !important;
+}
+.el-descriptions-item__label {
+  background-color: rgba(255,255,255,0.05) !important;
+  color: #cbd5e1 !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+.el-descriptions-item__content {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+  color: #f8fafc !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+/* History Drawer & Card Styles */
+.el-drawer {
+  background: #1e293b !important;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+.el-drawer__header {
+  color: #f8fafc !important;
+  font-weight: 700 !important;
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 15px;
+}
+.el-timeline-item__timestamp {
+  color: #94a3b8 !important;
+}
+.history-card {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  color: #f8fafc !important;
+  transition: all 0.3s;
+}
+.history-card:hover {
+  background: rgba(255,255,255,0.1) !important;
+  transform: translateY(-2px);
+}

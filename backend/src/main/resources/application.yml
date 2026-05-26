@@ -1,0 +1,76 @@
+server:
+  port: 8080
+
+#langchain4j测试模型
+langchain4j:
+  open-ai:
+    chat-model:
+#      base-url: http://langchain4j.dev/demo/openai/v1
+#      api-key: demo
+#      model-name: gpt-4o-mini
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: ${DASH_SCOPE_API_KEY}
+      model-name: deepseek-v3
+      temperature: 0.8
+      # 生产和演示环境默认关闭请求/响应日志，避免简历、JD、候选人回答进入日志。
+      log-requests: false
+      log-responses: false
+
+  #ollama
+  ollama:
+    chat-model:
+      base-url: http://localhost:11434
+      model-name: deepseek-r1:1.5b
+      temperature: 0.8
+      timeout: PT60S
+      log-requests: false
+      log-responses: false
+
+  #阿里百炼平台
+  community:
+    dashscope:
+      chat-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: qwen-max
+
+      #集成阿里通义千问-通用文本向量-v3
+      embedding-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: text-embedding-v3
+
+      #集成阿里通义千问-流式输出
+      streaming-chat-model:
+        api-key: ${DASH_SCOPE_API_KEY}
+        model-name: qwen-plus
+
+#MongoDB连接配置
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/chat_memory_db
+
+  # 基本数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/ace_interviewer?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+#ES
+app:
+  rag:
+    elasticsearch:
+      url: http://localhost:9200
+      index-name: scale-knowledge
+    retrieval:
+      max-results: 3
+      min-score: 0.6
+
+#启用日志debug级别
+logging:
+  level:
+    root: info
